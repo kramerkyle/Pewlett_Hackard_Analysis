@@ -49,3 +49,17 @@ SELECT	DISTINCT ON (e.emp_no)
 	WHERE ti.to_date = '9999-01-01'
 		AND e.birth_date BETWEEN '1965-01-01' AND '1965-12-31'
 	ORDER BY e.emp_no ASC;
+
+-- Mentorship titles
+SELECT COUNT (me.title), 
+ 		me.title
+ 	 INTO mentorship_titles
+  	FROM mentorship_eligibility as me
+  	GROUP BY me.title
+	ORDER BY me.count DESC;
+
+-- Mentorship Longevity
+SELECT * 
+	INTO mentorship_longevity
+FROM mentorship_eligibility as me
+	ORDER BY me.from_date ASC;
